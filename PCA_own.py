@@ -12,14 +12,11 @@ def standardise(array):
         array[:,i] = (array[:,i] - empMean)/np.std(array[:,i])
        
         
-def do_PCA(X, components):
-
-    standardise(X)
-    
+def do_PCA(X, components, do_std= True):
+    if(do_std):
+        standardise(X)
+        
     cov_mat = np.cov(X.T)
-    print "cov matrix is:"
-    
-    
     ei_vals, ei_vecs = np.linalg.eig(cov_mat)
 
     #print ei_vecs
